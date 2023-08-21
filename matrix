@@ -1,0 +1,31 @@
+def find_element(matrix, target):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    row, col = 0, cols - 1  # Начинаем с верхнего правого угла
+    
+    while row < rows and col >= 0:
+        if matrix[row][col] == target:
+            return row, col  # Найден элемент, возвращаем его координаты
+        elif matrix[row][col] < target:
+            row += 1  # Переходим к следующей строке
+        else:
+            col -= 1  # Переходим к предыдущему столбцу
+            
+    return None  # Элемент не найден
+
+# Пример матрицы
+matrix = [
+    [1, 3, 5, 7],
+    [2, 4, 6, 8],
+    [9, 10, 11, 12]
+]
+
+target = 6
+result = find_element(matrix, target)
+
+if result:
+    row, col = result
+    print(f"Элемент {target} найден в матрице на позиции ({row}, {col}).")
+else:
+    print(f"Элемент {target} не найден в матрице.")
