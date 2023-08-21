@@ -1,0 +1,29 @@
+def remove_element(matrix, target):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    for row in range(rows):
+        for col in range(cols):
+            if matrix[row][col] == target:
+                matrix[row][col] = None
+                return True  # Элемент найден и удален
+    
+    return False  # Элемент не найден
+
+# Пример матрицы
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+target = 5
+removed = remove_element(matrix, target)
+
+if removed:
+    print(f"Элемент {target} успешно удален из матрицы.")
+    for row in matrix:
+        row = [elem for elem in row if elem is not None]
+        print(row)
+else:
+    print(f"Элемент {target} не найден в матрице.")
